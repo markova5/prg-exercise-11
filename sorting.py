@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 def random_numbers(count, low=0, high=100):
     return [random.randint(low, high) for _ in range(count)]
 
-numbers = random_numbers(5)
+numbers = random_numbers(100)
 
 def selection_sort(numbers):
     numbers = numbers.copy()
