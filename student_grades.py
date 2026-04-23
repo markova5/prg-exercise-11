@@ -30,28 +30,37 @@ class StudentsGrades:
         indexes = []
         i= 0
 
-        for number in scores:
-            if number == score:
+        for i, x in enumerate(scores, start=0):
+            if x == score:
                 indexes.append(i)
                 i += 1
         return indexes
 
+
+
     def get_sorted(self):
         scores = self.scores.copy()
 
-        m = len(numbers)
+        m = len(scores)
 
         for cislo_pruchodu in range(m):
             for j in range(0, m - cislo_pruchodu - 1):
-                if numbers[j] > numbers[j + 1]:
-                    numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+                if scores[j] > scores[j + 1]:
+                    scores[j], scores[j + 1] = scores[j + 1], scores[j]
 
-        return numbers
-
+        return scores
 
 
 def main():
     results = StudentsGrades([85, 42, 91, 67, 50, 73, 100, 38, 58])
-    print(results.count())
-    print(results.get_by_index(2))
-    print(results.scores)
+    print("Studenti:", results.count())
+
+    for i in range(results.count()):
+        print(f"Student {i}: {results.get_by_index(i)} points - {results.get_grade(i)}")
+
+    print("plny pocet bodu", results.find(100))
+    print("Serazseno:", results.get_sorted())
+    print("Puvodni:", results.scores)
+
+if __name__ == "__main__":
+    main()
